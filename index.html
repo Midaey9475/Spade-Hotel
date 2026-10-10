@@ -1,273 +1,253 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Spade Hotel, Ibadan - an opulent five star hotel. Book a luxury room, suite or penthouse.">
     <title>Spades Hotel</title>
-    <link rel="stylesheet" href="hotel.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="css/hotel.css">
+
+    <!-- Fonts: Pacifico, Lilita One, Dancing Script -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Dancing+Script:wght@500&family=Kalnia:wght@500&family=Lilita+One&family=Pacifico&family=Whisper&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Lilita+One&family=Pacifico&display=swap" rel="stylesheet">
+
+    <!-- Scroll animations (AOS) and the date picker (jQuery UI) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Icons for the browser tab and phone home screen -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <section>
+
+    <!-- ============ HERO: background, navbar, title and booking bar ============ -->
+    <section id="hero">
         <div id="background"></div>
+
+        <!-- Navbar -->
         <div id="nav">
-            <div id="logo">
-                <img style="height: 60px;" src="spade.png" alt="">
+            <a href="index.html" class="logo">
+                <img src="assets/images/icons/spade.png" alt="">
                 <b>Spade Hotel <sup>&spades;</sup></b>
-            </div>
-            <div id="navdetail">
-                <ul>
-                    <li><a style="text-decoration: none; color: #1ed6fe;" href="">Home</a></li>
-                    <li><a style="text-decoration: none; color: #1ed6fe;" href="#rooms">Rooms</a></li>
-                    <li><a style="text-decoration: none; color: #1ed6fe;" href="#booking">Book Now</a></li>
-                    <li><a style="text-decoration: none; color: #1ed6fe" href="about.html">About</a></li>
-                </ul>
-            </div>
-            <div id="contact">
-                <img style="height: 30px;" src="call.png" alt="">
-                <b><a style="text-decoration: none; color: #1ed6fe;" href="#">+2349060896165</a></b>
-            </div>
-            <div id="burger">
-                <img id="openMenu" onclick="burgerDropdown()" src="menus.png" alt="menu">
-                <img id="closeMenu" onclick="closeBurger()" src="close.png" alt="menu">
-                <div id="burgerDrp">
-                    <ul>
-                        <li>Home</li>
-                        <li><a style="text-decoration: none; color: #1ed6fe;" href="#rooms">Rooms</a></li>
-                        <li><a style="text-decoration: none; color: #1ed6fe;" href="#booking">Book Now</li>
-                        <li><a style="text-decoration: none; color: #1ed6fe" href="about.html">About</a></li>
-                        <li><a style="text-decoration: none; color: #1ed6fe;" href="#">Contact Us</a></li>
-                    </ul>
-                </div>
-            </div>
+            </a>
+
+            <!-- links shown on big screens -->
+            <ul class="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#rooms">Rooms</a></li>
+                <li><a href="#booking">Book Now</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+
+            <a href="tel:+2349060896165" class="navPhone">
+                <img src="assets/images/icons/call.png" alt="">
+                <b>+2349060896165</b>
+            </a>
+
+            <!-- menu button shown on tablets and phones -->
+            <button class="burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="burgerMenu">
+                <img id="burgerIcon" src="assets/images/icons/menu.png" alt="">
+            </button>
+            <ul class="burgerMenu" id="burgerMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#rooms">Rooms</a></li>
+                <li><a href="#booking">Book Now</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#contactUs">Contact Us</a></li>
+            </ul>
         </div>
+
+        <!-- Title -->
         <div id="text1">
-            <h1> An Opulent Five Star Grandeur Hotel; Where Dreams Meets Desires, to Create Exclusivity.</h1>
-            <p style="color: gold;">&star; &star; &star; &star; &star;</p>
+            <h1>An Opulent Five Star Grandeur Hotel; Where Dreams Meets Desires, to Create Exclusivity.</h1>
+            <p class="stars">&star; &star; &star; &star; &star;</p>
         </div>
+
+        <!-- Booking bar -->
+        <form id="booking">
+            <div class="field">
+                <label class="srOnly" for="arrivalDate">Arrival Date</label>
+                <input id="arrivalDate" type="text" placeholder="Arrival Date" autocomplete="off" readonly>
+                <img src="assets/images/icons/schedule.png" alt="">
+            </div>
+            <div class="field">
+                <label class="srOnly" for="departureDate">Departure Date</label>
+                <input id="departureDate" type="text" placeholder="Departure Date" autocomplete="off" readonly>
+                <img src="assets/images/icons/schedule.png" alt="">
+            </div>
+            <div class="field">
+                <label class="srOnly" for="numberOfPersons">Number of Persons</label>
+                <select id="numberOfPersons" name="numberOfPersons">
+                    <option class="numOfPers" value="" disabled selected>Number of Persons</option>
+                    <option class="numOfPers" value="1-2">1-2</option>
+                    <option class="numOfPers" value="2-4">2-4</option>
+                    <option class="numOfPers" value="4-6">4-6</option>
+                    <option class="numOfPers" value="more">More</option>
+                </select>
+                <img src="assets/images/icons/user.png" alt="">
+            </div>
+            <button type="submit">Book now</button>
+        </form>
     </section>
 
-    <div id="divider"></div>
+    <div class="divider"></div>
 
-    <div id="booking">
-        <form action="#roomdiv1" id="book">
-            <div id="input">
-                <input id="arrivalDate" type="text" placeholder="Arrival Date">
-                <img height="20px" src="schedule.png" alt="#">
-            </div>
-            <div id="input">
-                <input id="departureDate" type="text" placeholder="Departure Date">
-                <img height="20px" src="schedule.png" alt="#">
-            </div>
-            <div id="input">   
-                <select id="numberOfPersons" name="numberOfPersons">
-                    <option value="" disabled selected>Number of Persons</option>
-                    <option value="1-2">1-2</option>
-                    <option value="2-4">2-4</option>
-                    <option value="4-6">4-6</option>
-                    <option value="more">More</option>
-                </select>
-                <img height="20px" src="user.png" alt="">
-            </div>
-            <button>Book now</button>
-        </form>
-    </div>
-
+    <!-- INTRO -->
     <section id="intro" data-aos="zoom-out">
-        <div id="introSub1"></div>
-        <div id="introSub2">
-            <h1>Spade <sup>&spades;</sup></h1>
-            <h2>Where Unparalleled Luxury Meets Impeccable Service</h2>
+        <img class="introPic1" src="assets/images/hotel/pool.webp" alt="Hotel pool area with lounge chairs by the sea" loading="lazy">
+        <div class="introText">
+            <h2>Spade <sup>&spades;</sup></h2>
+            <h3>Where Unparalleled Luxury Meets Impeccable Service</h3>
             <p>Nestled in the heart of Ibadan, <b>Spade<sup>&spades;</sup></b> stands as a beacon of refined elegance and lavish comfort. From the moment you step into our opulent lobby, you're enveloped in an atmosphere that marries sophistication with warmth.</p>
         </div>
-        <div id="introSub3"></div>
+        <img class="introPic2" src="assets/images/hotel/intro-room.webp" alt="Elegant hotel bedroom with warm lighting" loading="lazy">
     </section>
 
-    <div id="divider"></div>
+    <div class="divider"></div>
 
+    <!-- ROOMS -->
     <section id="rooms" data-aos="zoom-out-down" data-aos-duration="1000">
-        <h1>Our Rooms</h1>
+        <h2>Our Rooms</h2>
         <div id="roomtxt">
-            <h3>Experience an exquisite blend <br> of contemporary design and timeless charm  <br> across our range of meticulously curated rooms and suites.</h3> 
+            <h3>Experience an exquisite blend <br class="wideBreak"> of contemporary design and timeless charm <br class="wideBreak"> across our range of meticulously curated rooms and suites.</h3>
         </div>
-        <div id="roomdiv1" data-aos="fade-right">
-            <div id="roomsub1" onclick="LuxRm()">
-                <h2 style="font-size: 28px;">Luxurious Room</h2>
-                <p style="margin-bottom: 20px; font-size: large;">2 Adult 1 Child</p>
-                <p style="font-size: large;">Started from <b style="font-size: 20px;">&#8358;30,000</b></p>
-            </div>
+        <p class="swipeHint">Swipe to see more rooms &#8594;</p>
 
-            <div id="roomsub2" onclick="LuxRm2()">
-                <h2 style="font-size: 28px;">Couple's Room</h2>
-                <p style="margin-bottom: 20px; font-size: large;">2 Adult</p>
-                <p style="font-size: large;">Started from <b style="font-size: 20px;">&#8358;35,000</b></p>
-            </div>
-
-            <div id="roomsub3" onclick="LuxRm3()">
-                <h2 style="font-size: 28px;">Family Room</h2>
-                <p style="margin-bottom: 20px; font-size: large;">2 Adult 2 - 3 Child</p>
-                <p style="font-size: large;">Started from <b style="font-size: 20px;">&#8358;45,000</b></p>
-            </div>
-            
-            <div id="roomsub4" onclick="LuxRm4()">
-                <h2 style="font-size: 28px;">Luxurious Room</h2>
-                <p style="margin-bottom: 20px; font-size: large;">Single Adult</p>
-                <p style="font-size: large;">Started from <b style="font-size: 20px;">&#8358;30,000</b></p>
-            </div>
-            
-            <div id="roomsub5" onclick="LuxRm5()">
-                <h2 style="font-size: 25px;">Exclusive Family Suite</h2>
-                <p style="margin-bottom: 20px; font-size: large;">2 Adult 2 - 3 Child</p>
-                <p style="font-size: large;">Started from <b style="font-size: 20px;">&#8358;50,000</b></p>
-            </div>
-            
-            <div id="roomsub6" onclick="LuxRm6()">
-                <h2 style="font-size: 28px;">V.I.P Suite</h2>
-                <p style="margin-bottom: 20px; font-size: large;">2 Adults</p>
-                <p style="font-size: large;">Started from <b style="font-size: 20px;">&#8358;100,000</b></p>
-            </div>
-            
-            <div id="roomsub7" onclick="LuxRm7()">
-                <h2 style="font-size: 28px;">V.V.I.P</h2>
-                <p style="margin-bottom: 20px; font-size: large;">Multipurpose</p>
-                <p style="font-size: large;">Started from <b style="font-size: 20px;">&#8358;150,000</b></p>
-            </div>
-            
-            <div id="roomsub8" onclick="LuxRm8()">
-                <h2 style="font-size: 25px;">Penthouse Apartment</h2>
-                <p style="margin-bottom: 20px; font-size: large;">Multipurpose Apartment</p>
-                <p style="font-size: large;">Started from <b style="font-size: 20px;">&#8358;250,000</b></p>
-            </div>
-
-        </div>
+        <!-- the room cards are added here by js/main.js, using the list in js/rooms.js -->
+        <div id="roomRow" data-aos="fade-right"></div>
     </section>
 
-    <div id="Payback">
-        <div id="payment1">
+    <!-- PAYMENT POP-UP -->
+    <div id="payback" aria-hidden="true">
+        <div id="payment1" role="dialog" aria-modal="true" aria-labelledby="payTitle">
             <div id="paypic">
-                <b>Amount Due &#8702; &#8358;<b id="rmPrice">30,000</b></b>
+                <img id="payPicImg" src="" alt="">
+                <p class="amountDue">Amount Due &#8702; &#8358;<b id="rmPrice">30,000</b></p>
             </div>
             <div id="paytxt">
-                <div id="Pmnt">
-                    <h1>Payment</h1>
-                    <p id="X_pay" onclick="cancelPaytab()">❌</p>
+                <div class="payHead">
+                    <h2 id="payTitle">Payment</h2>
+                    <button type="button" id="closePay" class="closePay" aria-label="Close payment">&#10060;</button>
                 </div>
-                <form action="#" method="post">
+
+                <form id="payForm" novalidate>
                     <label for="Email">Email Address</label>
-                    <input id="Email" type="email" placeholder="Please Provide E-mail">
+                    <input id="Email" type="email" placeholder="Please Provide E-mail" autocomplete="off">
+
                     <label for="Card_Number">Card Number</label>
-                    <input id="Card_Number" type="text" placeholder="Card Number" maxlength="16">
-                    <label for="Expiration Date">Expiration Date</label>
+                    <input id="Card_Number" type="text" inputmode="numeric" placeholder="Card Number" maxlength="16" autocomplete="off">
+
+                    <label for="expDate">Expiration Date</label>
                     <input id="expDate" type="date">
-                    <div id="CvvPass">
-                        <div id="cvv">
+
+                    <div class="cvvRow">
+                        <div class="cvvBox">
                             <label for="CVV">Input CVV</label>
-                            <input id="CVV" type="password" placeholder="CVV" maxlength="3">
+                            <input id="CVV" type="password" inputmode="numeric" placeholder="CVV" maxlength="3" autocomplete="off">
                         </div>
-                        <div id="cvv">
-                            <label for="CVV">Password</label>
-                            <input id="Password" type="password" placeholder="Password" maxlength="4">
+                        <div class="cvvBox">
+                            <label for="Password">Password</label>
+                            <input id="Password" type="password" inputmode="numeric" placeholder="Password" maxlength="4" autocomplete="off">
                         </div>
                     </div>
-                    <div id="terms">
-                        <input type="checkbox">
-                        <p><a href="">Agree to terms and Condition.</a></p>
-                    </div>  
+
+                    <div class="terms">
+                        <input id="terms" type="checkbox">
+                        <label for="terms">Agree to terms and Condition.</label>
+                    </div>
+
+                    <p id="payError" class="payError"></p>
+                    <div class="payBtn">
+                        <button type="submit">Submit</button>
+                    </div>
                 </form>
-                <div id="btn" onclick="paymntSb()">
-                    <button>Submit</button>
+
+                <!-- shown after the form is submitted -->
+                <div id="paySuccess" class="paySuccess">
+                    <h3>Thank you!</h3>
+                    <p>Your booking request for the <b id="successRoom"></b> has been received.</p>
+                    <p class="demoNote">This is a demo, so no payment was taken.</p>
+                    <div class="payBtn"><button type="button" id="closePay2">Close</button></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="divider"></div>
+    <div class="divider"></div>
 
+    <!-- WHAT WE OFFER -->
     <section id="ads" data-aos="zoom-out-up">
         <div id="offertxt">
-            <h1>What we Offer</h1>
+            <h2>What we Offer</h2>
         </div>
-        <div id="offer1">
-            <div id="offersub1">
-                <h3>Exclusive Five Star Suite</h3>
-                <p style="margin-top: 10px;">Experience an exquisite blend of contemporary design and timeless charm across our range of meticulously curated rooms and suites.</p>
+        <div class="offerGrid">
+            <div class="offer">
+                <img src="assets/images/offers/suite.webp" alt="Exclusive five star suite" loading="lazy">
+                <div class="offerText">
+                    <h3>Exclusive Five Star Suite</h3>
+                    <p>Experience an exquisite blend of contemporary design and timeless charm across our range of meticulously curated rooms and suites.</p>
+                </div>
             </div>
-        </div>
-        <div id="offer2">
-            <div id="offersub2">
-                <h3>Exclusive Restaurant</h3>
-                <p style="margin-top: 10px;">Immerse yourself in an ambiance of refined luxury, where stylish decor and tasteful design create the perfect backdrop for an extraordinary dining affair.</p>
+            <div class="offer">
+                <img src="assets/images/offers/restaurant.webp" alt="Exclusive restaurant" loading="lazy">
+                <div class="offerText">
+                    <h3>Exclusive Restaurant</h3>
+                    <p>Immerse yourself in an ambiance of refined luxury, where stylish decor and tasteful design create the perfect backdrop for an extraordinary dining affair.</p>
+                </div>
             </div>
-        </div>
-        <div id="offer3">
-            <div id="offersub3">
-                <h3>Our Sauna</h3>
-                <p style="margin-top: 10px;">Balances sophistication, comfort, and tranquility, appealing to guests seeking the ultimate relaxation in a high-end setting.</p>
+            <div class="offer">
+                <img src="assets/images/offers/sauna.webp" alt="Hotel sauna" loading="lazy">
+                <div class="offerText">
+                    <h3>Our Sauna</h3>
+                    <p>Balances sophistication, comfort, and tranquility, appealing to guests seeking the ultimate relaxation in a high-end setting.</p>
+                </div>
             </div>
-        </div>
-        <div id="offer4">
-            <div id="offersub4">
-                <h3>Exclusive Dishes</h3>
-                <p style="margin-top: 10px;">Locally sourced ingredients and globally inspired flavors, every dish that emerges from our kitchen is a testament to quality and craftsmanship.</p>
+            <div class="offer">
+                <img src="assets/images/offers/kitchen.webp" alt="Hotel kitchen preparing dishes" loading="lazy">
+                <div class="offerText">
+                    <h3>Exclusive Dishes</h3>
+                    <p>Locally sourced ingredients and globally inspired flavors, every dish that emerges from our kitchen is a testament to quality and craftsmanship.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <div id="divider"></div>
+    <div class="divider"></div>
 
-    <footer data-aos="fade-right">
-        <div id="location">
-            <div style="width: 300px;">
-            <h1>Location</h1>
-            </div>
-            <img height="20px" src="location.png" alt="">
-            <b style="color: aliceblue;">No 15, Majek Street off Gateway.</b>
+    <!-- FOOTER -->
+    <footer id="contactUs" data-aos="fade-right">
+        <div class="footBox">
+            <h2>Location</h2>
+            <p><img src="assets/images/icons/location.png" alt=""><b>No 15, Majek Street off Gateway.</b></p>
         </div>
-        <div id="Contact">
-            <div style="width: 300px;">
-                <h1>Our Help Desk</h1>
-                </div>
-                <img height="20px" src="call.png" alt="">
-            <b><a style="color: aliceblue; text-decoration: none;" href="">+2349060896165,</a> <a style="color: aliceblue; text-decoration: none;" href="mailto:spades1@gmail.com">Spades1@mail.com</a></b>
+        <div class="footBox">
+            <h2>Our Help Desk</h2>
+            <p>
+                <img src="assets/images/icons/call.png" alt="">
+                <b><a href="tel:+2349060896165">+2349060896165</a>, <a href="#">spade@mail.com</a></b>
+            </p>
         </div>
-        <div id="right">
-            <div style="width: 300px;">
-                <h1>Spade <sup>&spades;</sup> Hotel</h1>
-            </div>
-            <div class="socials">
-                <a href="#"><img height="15px" src="whatsappicon.png" alt=""></a>
-                <a href="#"><img height="15px" src="twitter.png" alt=""></a>
-                <a href="#"><img height="15px" src="facebook.png" alt=""></a>
-                <a href="#"><img height="15px" src="instagram.png" alt=""></a><br>
-                <b style="color: aliceblue;">Copyright &#169;2023 All rights reserved | Spade <sup>&spades;</sup></b>
-            </div>
+        <div class="footBox">
+            <h2>Spade <sup>&spades;</sup> Hotel</h2>
+            <b class="copyright">Copyright &#169;2023. Designed by;&nbsp;<span class="brand"><img class="brand-logo" src="./assets/images/icons/akForge white.png" alt="brand_Logo"> AK_<span style="color: #FF7A00;">FORGE</span></span></b>
         </div>
+        
     </footer>
+
     <div class="goTop">
-        <a href="#nav">&spades;</a>
+        <a href="#nav" aria-label="Back to top">&spades;</a>
     </div>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init();
-</script>
-<script>
-    $(function() {
-        $("#arrivalDate").datepicker();
-        $("#departureDate").datepicker();
-    });
-</script>
-<script src="main.js"></script>
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="js/rooms.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,122 @@
+/* =====================================================================
+   about.css - styles for the About page (about.html)
+   Same design as before. On tablets and phones the two boxes stack
+   under each other instead of sitting side by side.
+   ===================================================================== */
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    overflow-x: hidden;
+}
+body{
+    min-height: 100vh;
+    background-color: #222;
+    background-image: url(../assets/images/hero/reception-about.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+}
+
+/* the link back to the home page */
+.backHome{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 5;
+    padding: 8px 16px;
+    border: 1px solid #1ed6fe;
+    border-radius: 30px;
+    background-color: rgba(2, 0, 36, 0.75);
+    color: #1ed6fe;
+    font-family: 'Pacifico', cursive;
+    text-decoration: none;
+    transition: all .5s;
+}
+.backHome:hover{
+    background-color: #1ed6fe;
+    color: rgb(2, 0, 36);
+}
+
+.aboutPage{
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#about{
+    position: relative;
+    width: 50%;
+    max-width: 100%;
+    min-height: 400px;
+    padding: 20px;
+    display: grid;
+    align-content: center;
+    row-gap: 20px;
+    color: #1ed6fe;
+    border-radius: 2% 10%;
+    box-shadow: 1px 1px 0.5px #1ed6fe;
+    background: #00000041;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    animation: 1s text ease;
+}
+#about h1{
+    font-family: 'Pacifico', cursive;
+    font-size: 3rem;
+    font-weight: bolder;
+    color: #222;
+    text-shadow: 1px 2px 5px #1ed6fe;
+}
+#about p{
+    font-family: 'Caveat', cursive;
+    font-weight: bolder;
+    font-size: 1.5rem;
+}
+.brandName{
+    font-family: 'Pacifico', cursive;
+}
+/* the text box drops in and spins once */
+@keyframes text{
+    from{
+        transform: translateY(-120%) rotate(0deg);
+    }
+    to{
+        transform: translateY(0%) rotate(360deg);
+    }
+}
+
+/* ----- Tablets and phones: stack the two boxes ----- */
+@media all and (max-width: 768px) {
+    .aboutPage{
+        height: fit-content;
+        width: 100%;
+        position: absolute;
+        top: 12%;
+        padding: 20px;
+        align-items: flex-start;
+    }
+    #about{
+        min-width: 80%;
+        max-width: 100%;
+    }
+    #about h1{
+        font-size: 32px;
+    }
+    #about p{
+        font-size: 21px;
+    }
+}
+
+/* people who asked their device for less motion get no animations */
+@media (prefers-reduced-motion: reduce) {
+    *{
+        animation: none !important;
+        transition: none !important;
+    }
+}

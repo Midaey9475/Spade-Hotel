@@ -1,0 +1,1067 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html{
+    scroll-behavior: smooth;    /* the scroll animations briefly make sections wider than the screen. */
+    overflow-x: hidden;         /* Without this, phones zoom the whole page out to fit them. */
+}
+body{
+    background: hsl(0, 0%, 21%);
+    overflow-x: hidden;
+}
+img{
+    max-width: 100%;
+}
+/* text that only screen readers can see (labels for the booking bar) */
+.srOnly{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+/* the coloured line between sections */
+.divider{
+    height: 10px;
+    width: 100%;
+    background: linear-gradient(141deg, cyan 0%, gold 40%, deeppink 90%);
+}
+
+
+/* Hero (top of the page) */
+#hero{
+    position: relative;
+    height: 100vh;
+    height: 100svh;
+    isolation: isolate;           /* keeps the background picture inside the hero */
+}
+#background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../assets/images/hero/reception.webp);
+    background-size: cover;
+    z-index: -1;
+}
+
+/* ----- Navbar ----- */
+#nav{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 50px;
+    border-bottom: 1px solid #1ed6fe;
+    box-shadow: 0px 2px 5px #1ed6fe;
+}
+.logo{
+    height: 70px;
+    width: 210px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+.logo img{
+    height: 60px;
+}
+.logo b{
+    font-family: 'Pacifico', cursive;
+    font-size: large;
+    color: #1ed6fe;
+}
+.navLinks{
+    list-style: none;
+    height: 50px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 40px;
+    font-size: 25px;
+    font-weight: bolder;
+    font-family: 'Lilita One', sans-serif;
+}
+.navLinks a,
+.burgerMenu a{
+    color: #1ed6fe;
+    text-decoration: none;
+}
+.navPhone{
+    height: 50px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 10px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 1s cubic-bezier(.36, .63, .5, .73);
+}
+.navPhone img{
+    height: 30px;
+}
+.navPhone b{
+    font-family: 'Pacifico', cursive;
+    color: #1ed6fe;
+}
+.navPhone:hover{
+    background-color: #353535;
+}
+/* underline effect when hovering a menu link (mouse only) */
+@media (hover: hover) {
+    .navLinks li:hover{
+        transform: scaleX(1.05);
+        text-shadow: 1px 1px 5px #353535;
+    }
+}
+
+/* menu button + dropdown (hidden on big screens) */
+.burger{
+    display: none;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+}
+.burger img{
+    height: 100%;
+    width: auto;
+}
+.burgerMenu{
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    padding: 5px 0px 10px 0px;
+    list-style: none;
+    background-color: #fff;
+    z-index: 30;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+    animation: dropDown .3s ease-out;
+    overflow: hidden;
+}
+.burgerMenu.open{
+    display: block;
+}
+.burgerMenu li{
+    margin: 10px;
+    border-bottom: 1px solid #1ed6fe;
+    font-family: 'Pacifico', cursive;
+}
+@media (hover: hover) {
+    .burgerMenu li:hover{
+        transform: translateX(8px);
+        text-shadow: 1px 1px 5px #353535;
+    }
+}
+.burgerMenu a{
+    display: block;
+    padding: 6px 0px;
+}
+@keyframes dropDown{
+    from{
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ----- Title in the middle of the hero ----- */
+#text1{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    color: #1ed6fe;
+    font-size: 30px;
+    font-family: 'Lilita One', sans-serif;
+    background-image: conic-gradient(rgba(0, 255, 255, 0.3), rgba(255, 20, 147, 0.3), rgba(255, 165, 0, 0.3), rgba(0, 255, 255, 0.3));
+    border-radius: 50px;
+    box-shadow: 0px 2px 10px white;
+    text-shadow: 1px 1px 5px #353535;
+    padding: 20px 10px;
+}
+#text1 h1{
+    font-size: 2em;
+}
+.stars{
+    color: gold;
+}
+
+/* ----- Booking bar (sits half on the hero, half below it) ----- */
+#booking{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -59px;
+    margin: 0 auto;
+    width: fit-content;
+    max-width: 94vw;
+    height: 100px;
+    padding: 0px 20px;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 250px));
+    gap: 15px;
+    align-items: center;
+    background-image: conic-gradient(rgba(0, 255, 255, 0.8), rgba(255, 20, 147, 0.8), rgba(255, 165, 0, 0.8), rgba(0, 255, 255, 0.8));
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px white;
+    transition: 1.5s;
+}
+#booking .field{
+    height: 50px;
+    width: 100%;
+    padding: 0px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 8px;
+    border-radius: 50px;
+    background-color: rgb(207, 206, 206);
+}
+#booking .field img{
+    height: 20px;
+    width: 20px;
+    flex-shrink: 0;
+}
+#booking input,
+#booking select{
+    height: 40px;
+    width: 100%;
+    min-width: 0;
+    background-color: rgb(207, 206, 206);
+    border: none;
+    font-size: large;
+    font-family: 'Pacifico', cursive;
+    cursor: pointer;
+}
+#booking select{
+    color: rgba(48, 47, 47, 0.7);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+#booking button{
+    height: 50px;
+    width: 100%;
+    border-radius: 50px;
+    border: 1px solid rgba(109, 163, 243, 0.7);
+    background-color: #1ed6fe;
+    cursor: pointer;
+    font-size: large;
+    font-family: 'Pacifico', cursive;
+    outline: 1px solid #1ed6fe;
+    transition: all 550ms cubic-bezier(.36, .63, .5, .73);
+}
+input:focus,
+select:focus{
+    outline: none;
+}
+#booking .field:focus-within{
+    box-shadow: 0px 0px 0px 2px #1ed6fe;
+}
+@media (hover: hover) {
+    #booking:hover{
+        transform: scaleX(1.05);
+    }
+    #booking button:hover{
+        background-color: rgba(20, 242, 250, 0.5);
+        outline-offset: 15px;
+        outline-color: rgba(109, 163, 243, 0);
+    }
+}
+
+
+/* Intro */
+#intro{
+    display: grid;
+    grid-template-columns: 5fr 3fr 3fr;
+    column-gap: 10px;
+    align-items: center;
+    width: 94%;
+    max-width: 1120px;
+    min-height: 700px;
+    margin: 0 auto;
+    padding: 40px 0px;
+    color: white;
+}
+.introPic1{
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+.introPic2{
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+}
+.introText{
+    font-family: 'Dancing Script', cursive;
+}
+.introText h2{
+    font-size: 50px;
+    font-weight: bolder;
+}
+.introText h3{
+    font-size: 30px;
+}
+.introText p{
+    font-size: 20px;
+    font-family: 'Pacifico', cursive;
+}
+
+
+/* Rooms */
+#rooms{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding: 50px 20px;
+    color: whitesmoke;
+}
+#rooms h2{
+    font-size: 30px;
+    font-weight: bolder;
+    font-family: 'Pacifico', cursive;
+}
+#roomtxt h3{
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: 'Lilita One', sans-serif;
+}
+.swipeHint{
+    display: none;
+    font-family: 'Lilita One', sans-serif;
+    font-size: 14px;
+    color: #1ed6fe;
+}
+
+/* the row of room cards (slides sideways) */
+#roomRow{
+    height: 500px;
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 20px;
+    cursor: pointer;
+}
+#roomRow::-webkit-scrollbar{
+    height: 10px;
+}
+#roomRow::-webkit-scrollbar-track{
+    border-radius: 20px;
+}
+#roomRow::-webkit-scrollbar-thumb{
+    border-radius: 20px;
+    background: linear-gradient(141deg, olive 10%, red 50%, #1ed6fe 100%);
+}
+
+/* one room card */
+.room{
+    position: relative;
+    isolation: isolate;
+    flex: 0 0 auto;
+    width: 320px;
+    min-height: 300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-snap-align: start;
+    transition: all 550ms cubic-bezier(.36, .63, .5, .73);
+}
+.room:first-child{
+    min-height: 320px;
+}
+.room:nth-child(even){
+    width: 300px;
+    min-height: 350px;
+}
+.roomPic{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+/* soft dark layer at the bottom so the white text is easy to read */
+.room::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0) 60%);
+    z-index: -1;
+}
+.room h3{
+    font-size: 28px;
+}
+.room h3.longName{
+    font-size: 25px;
+}
+.room .guests{
+    margin-bottom: 20px;
+    font-size: large;
+}
+.room .price{
+    font-size: large;
+}
+.room .price b{
+    font-size: 20px;
+}
+.room:focus-visible{
+    outline: 3px solid #1ed6fe;
+}
+@media (hover: hover) {
+    .room:hover{
+        box-shadow: 0px 0px 10px 2px rgb(231, 229, 229);
+        transform: scale(1.05);
+        border-radius: 5px;
+    }
+}
+
+
+/* Payment pop-up */
+#payback{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(92, 89, 89, 0.8);
+    z-index: 100;
+}
+#payback.open{
+    display: flex;
+}
+#payment1{
+    display: flex;
+    min-width: 0;                 /* lets the pop-up shrink to fit small screens */
+    width: min(600px, 100%);
+    max-height: 100%;
+    background: rgb(216, 219, 219);
+    border-radius: 5px;
+    overflow: hidden;
+}
+/* left side: room picture + the amount */
+#paypic{
+    position: relative;
+    flex-shrink: 0;
+    width: 250px;
+    min-height: 450px;
+    padding: 10px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    text-align: right;
+    font-style: oblique;
+    color: #d2e0e0;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 5px;
+}
+#paypic img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.amountDue{
+    position: relative;
+    text-shadow: 1px 1px 4px #000;
+}
+/* right side: the form */
+#paytxt{
+    flex: 1;
+    min-width: 0;
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+    overflow-y: auto;
+}
+.payHead{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.payHead h2{
+    font-size: 32px;
+    color: #060707;
+    font-family: 'Lilita One', sans-serif;
+}
+.closePay{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 6px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+#payForm{
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);   /* stops long fields from pushing the form wider than the screen */
+    row-gap: 10px;
+    color: #353535;
+    font-family: 'Lilita One', sans-serif;
+}
+#payForm input[type="email"],
+#payForm input[type="text"],
+#payForm input[type="password"],
+#payForm input[type="date"]{
+    width: 100%;
+    height: 34px;
+    padding-left: 10px;
+    border: 1px solid rgb(216, 219, 219);
+    border-bottom: 1px solid #1ed6fe;
+    background: rgb(216, 219, 219);
+    font-family: 'Lilita One', sans-serif;
+    font-size: 16px;
+}
+#payForm input{
+    min-width: 0;
+}
+#payForm input.invalid{
+    border-bottom-color: red;
+}
+.cvvRow{
+    display: flex;
+    column-gap: 20px;
+}
+.cvvBox{
+    flex: 1;
+    min-width: 0;
+    display: grid;
+    row-gap: 10px;
+}
+.terms{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+.terms input{
+    width: auto;
+    height: 15px;
+}
+.terms label{
+    font-size: 12px;
+    color: #353535;
+}
+.payError{
+    min-height: 16px;
+    color: #b00020;
+    font-size: 13px;
+}
+.payBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.payBtn button{
+    width: 200px;
+    height: 35px;
+    background: rgb(216, 219, 219);
+    border: 1px solid rgb(216, 219, 219);
+    border-radius: 30px;
+    border-bottom: 3px solid #1ed6fe;
+    font-family: 'Lilita One', sans-serif;
+    transition: all .5s cubic-bezier(.36, .63, .5, .73);
+    cursor: pointer;
+    outline: none;
+}
+@media (hover: hover) {
+    #payment1:hover .payBtn button:hover{
+        border: 2px solid #1ed6fe;
+        outline: 1px solid #1ed6fe;
+        outline-offset: 10px;
+        outline-color: rgba(0, 238, 255, 0);
+    }
+}
+/* thank you message (hidden until the form is submitted) */
+.paySuccess{
+    display: none;
+    text-align: center;
+    font-family: 'Lilita One', sans-serif;
+    color: #353535;
+}
+.paySuccess h3{
+    font-size: 28px;
+}
+.demoNote{
+    font-size: 13px;
+}
+#payment1.done #payForm{
+    display: none;
+}
+#payment1.done .paySuccess{
+    display: grid;
+    row-gap: 12px;
+    padding: 20px 0px;
+}
+body.noScroll{
+    overflow: hidden;
+}
+
+
+/* What we offer */
+#ads{
+    padding: 20px 0px;
+    background-color: #353535;
+    overflow: hidden;
+}
+#offertxt{
+    margin-bottom: 25px;
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    font-size: 30px;
+    font-weight: bolder;
+    text-shadow: 1px 2px 5px whitesmoke;
+}
+#offertxt h2{
+    font-size: 2em;
+}
+.offerGrid{
+    width: min(1346px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 25px;
+}
+.offer{
+    position: relative;
+    isolation: isolate;
+    height: 300px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+}
+.offer img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+.offer::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 55%);
+    z-index: -1;
+}
+.offerText{
+    max-height: 40px;                  /* only the title shows until you hover */
+    padding: 0px 10px;
+    overflow: hidden;
+    color: white;
+    font-family: 'Pacifico', cursive;
+    text-align: center;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+    transition: max-height 1s;
+}
+.offerText h3{
+    font-size: clamp(14px, 1.35vw, 1.17em);
+}
+.offerText p{
+    margin-top: 10px;
+}
+@media (hover: hover) {
+    .offer:hover .offerText{
+        max-height: 190px;
+    }
+}
+/* phones and tablets can't hover, so the full text is always shown */
+@media (hover: none) {
+    .offerText{
+        max-height: none;
+    }
+}
+
+
+/* Footer */
+footer{
+    min-height: 150px;
+    padding: 25px 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    background-color: #353535;
+    color: white;
+    position: relative;
+}
+.footBox{
+    min-height: 100px;
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    box-shadow: 0px 1px 5px 1px #1ed6fe;
+}
+.footBox h2{
+    font-family: 'Pacifico', cursive;
+    font-size: 32px;
+}
+.footBox p{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+.footBox p img{
+    height: 20px;
+    flex-shrink: 0;
+}
+.footBox b{
+    color: aliceblue;
+    font-family: fantasy;
+    font-size: 15px;
+}
+.footBox a{
+    color: aliceblue;
+    text-decoration: none;
+}
+.footBox .copyright{
+    font-size: 11px;
+}
+.copyright{
+    display: flex; align-items: center;
+}
+.brand{
+    display: inline-flex; align-items: center;
+}
+.brand-logo{
+    height: 24px;
+    width: auto;
+}
+
+/* the little back to top button (bottom right) */
+.goTop{
+    position: fixed;
+    right: 2%;
+    bottom: 2%;
+    height: 50px;
+    width: 50px;
+    display: flex; justify-content: center; align-items: center;
+    border-radius: 50% 0% 50% 50%;
+    transform: rotate(-45deg);
+    background: linear-gradient(45deg, #1ed6fe 20%, #9ac7e4 50%, #dac170 100%);
+    box-shadow: 0px 0px 5px 2px white;
+    z-index: 10;
+    outline: none;
+    transition: all 1s cubic-bezier(.36, .63, .5, .73);
+    cursor: pointer;
+    overflow: hidden;
+}
+.goTop a{
+    text-align: center; place-content: center;
+    height: 100%; width: 100%;
+    font-size: 2.2rem;
+    color: red; text-decoration: none;
+    rotate: 45deg;
+}
+@media (hover: hover) {
+    .goTop:hover{
+        outline: 1px solid rgb(255, 255, 255, 0);
+        outline-offset: 20px;
+    }
+}
+
+/* the date picker pop-up must appear above everything */
+.ui-datepicker{
+    z-index: 50 !important;
+}
+
+/* MEDIA QUERY */
+
+/* TABLETS  (1024px and smaller) */
+@media all and (max-width: 1024px) {
+
+    /* Hero becomes a column: navbar, title, booking bar */
+    #hero{
+        height: auto;
+        min-height: 100vh;
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+    }
+    #background{
+        opacity: 0.5;
+        background-position: center top;
+    }
+    #nav{
+        position: relative;
+        flex-shrink: 0;
+        padding: 0px 20px;
+    }
+    .logo{
+        width: auto;
+    }
+    .navLinks,
+    .navPhone{
+        display: none;
+    }
+    .burger{
+        display: block;
+    }
+    #text1{
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        width: min(90vw, 760px);
+        margin: auto;
+        font-size: clamp(15px, 3.2vw, 24px);
+    }
+    #booking{
+        position: relative;
+        bottom: auto;
+        flex-shrink: 0;
+        width: min(760px, 92vw);
+        height: auto;
+        margin: 0 auto 30px auto;
+        padding: 20px;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+    }
+    #booking .field{
+        height: 52px;
+        padding: 0px 8px;
+        background-color: transparent;
+        border-radius: 0;
+        border-bottom: 2px solid #1ed6fe;
+        border-bottom-left-radius: 10px;
+    }
+    #booking input,
+    #booking select{
+        background-color: transparent;
+        color: #1ed6fe;
+        font-size: 16px;    /* 16px stops phones from zooming in on tap */
+    }
+    .numOfPers{
+        color: #1ed6fe;
+    }
+    #booking ::placeholder{
+        color: #2b2b2b;
+        opacity: 1;
+    }
+    #booking select{
+        color: #2b2b2b;
+    }
+    #booking .field:nth-of-type(3){
+        grid-column: 1 / -1;
+    }
+    #booking button{
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: min(260px, 100%);
+    }
+
+    /* Intro shows on tablets too: text on top, pictures under it */
+    #intro{
+        grid-template-columns: 1fr 1fr;
+        row-gap: 20px;
+        min-height: 0;
+        padding: 60px 0px 40px 0px;
+    }
+    .introText{
+        grid-column: 1 / -1;
+        order: -1;
+        max-width: 640px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .introPic1,
+    .introPic2{
+        aspect-ratio: 4 / 3;
+    }
+
+    /* Rooms */
+    .swipeHint{
+        display: block;
+    }
+    #roomRow{
+        height: auto;
+        padding: 20px 20px 30px 20px;
+    }
+    .room{
+        width: min(320px, 78vw);
+    }
+    .room:nth-child(even){
+        width: min(300px, 76vw);
+    }
+
+    /* What we offer: two per row */
+    .offerGrid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .offerText h3{
+        font-size: 1.17em;
+    }
+
+    /* Footer: two boxes per row, the last one in the middle */
+    footer{
+        grid-template-columns: repeat(2, minmax(0, 300px));
+        border-bottom: 5px solid #9ac7e4;
+    }
+    .footBox:last-child{
+        grid-column: 1 / -1;
+        justify-self: center;
+        max-width: 300px;
+    }
+
+    .goTop{
+        display: none;
+    }
+}
+
+/* SMALL TABLETS  (700px and smaller) */
+@media all and (max-width: 700px) {
+    .wideBreak{
+        display: none;
+    }
+    #roomtxt h3{
+        font-size: 16px;
+    }
+
+    /* the payment pop-up: picture on top, form under it */
+    #payment1{
+        flex-direction: column;
+        overflow-y: auto;
+        max-height: 94vh;
+        max-height: 94dvh;
+    }
+    #paypic{
+        width: 100%;
+        min-height: 110px;
+        height: 110px;
+        flex-shrink: 0;
+    }
+    #paytxt{
+        overflow-y: visible;
+    }
+}
+
+/* PHONES  (560px and smaller) */
+@media all and (max-width: 560px) {
+    #nav{
+        padding: 0px 12px;
+    }
+    .logo img{
+        height: 48px;
+    }
+
+    #booking{
+        grid-template-columns: 1fr;
+        padding: 18px 16px;
+    }
+
+    #intro{
+        grid-template-columns: 1fr;
+        width: 92%;
+    }
+    .introText h2{
+        font-size: 40px;
+    }
+    .introText h3{
+        font-size: 24px;
+    }
+    .introText p{
+        font-size: 17px;
+    }
+
+    #rooms{
+        padding: 40px 14px;
+    }
+    #roomRow{
+        padding: 20px 14px 30px 14px;
+    }
+
+    #offertxt{
+        font-size: clamp(20px, 7vw, 30px);
+    }
+    .offerGrid{
+        grid-template-columns: 1fr;
+        width: 92%;
+    }
+
+    footer{
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    .footBox,
+    .footBox:last-child{
+        max-width: 420px;
+    }
+    .footBox h2{
+        font-size: 26px;
+    }
+}
+
+/* very small phones (360px and smaller) */
+@media all and (max-width: 380px) {
+    .logo b{
+        font-size: 16px;
+    }
+    .cvvRow{
+        column-gap: 10px;
+    }
+}
+
+/* people who asked their device for less motion get no animations */
+@media (prefers-reduced-motion: reduce) {
+    *{
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
